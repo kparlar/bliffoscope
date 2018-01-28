@@ -1,0 +1,90 @@
+{
+	"id": "64e5b28b-fe8a-041d-9312-d5264129dc3d",
+	"name": "Bliffoscope",
+	"description": "",
+	"order": [],
+	"folders": [
+		{
+			"name": "Targets",
+			"description": "",
+			"collectionId": "64e5b28b-fe8a-041d-9312-d5264129dc3d",
+			"order": [],
+			"owner": 0,
+			"folders_order": [
+				"2310901e-19ad-2875-21aa-d27acacb5fb6"
+			],
+			"id": "44c574db-727a-ef05-fa01-90d100b3cbc4"
+		},
+		{
+			"name": "app",
+			"description": "",
+			"collectionId": "64e5b28b-fe8a-041d-9312-d5264129dc3d",
+			"order": [
+				"ba048e33-eb97-93de-4462-710f82699f5d"
+			],
+			"owner": 0,
+			"folder": "44c574db-727a-ef05-fa01-90d100b3cbc4",
+			"folders_order": [],
+			"id": "2310901e-19ad-2875-21aa-d27acacb5fb6"
+		}
+	],
+	"folders_order": [
+		"44c574db-727a-ef05-fa01-90d100b3cbc4"
+	],
+	"timestamp": 1516650819202,
+	"owner": 0,
+	"public": false,
+	"requests": [
+		{
+			"id": "ba048e33-eb97-93de-4462-710f82699f5d",
+			"headers": "Access-Control-Allow-Origin: *\n",
+			"headerData": [
+				{
+					"key": "Access-Control-Allow-Origin",
+					"value": "*",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/api/app/bliffoscope/v1/targets/StarShip",
+			"folder": "2310901e-19ad-2875-21aa-d27acacb5fb6",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "targetFile",
+					"value": "Starship.blf",
+					"description": "",
+					"type": "file",
+					"enabled": true
+				},
+				{
+					"key": "testFile",
+					"value": "TestData.blf",
+					"description": "",
+					"type": "file",
+					"enabled": true
+				},
+				{
+					"key": "threshold",
+					"value": "0.7",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1517044184182,
+			"name": "findAll",
+			"description": "",
+			"collectionId": "64e5b28b-fe8a-041d-9312-d5264129dc3d",
+			"responses": []
+		}
+	]
+}

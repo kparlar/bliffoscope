@@ -1,0 +1,96 @@
+
+<div class="header-anml">
+</div>
+<div class="logo"> </div>
+<div class="container">
+    <h1>Bliffoscope Data Analysis</h1>
+    <h2>Please upload Target and Test files</h2>
+    <div >
+        <label for="targetFile">Select Target File:</label><input type="file" ng-model-instant id="targetFile" onchange="angular.element(this).scope().setFiles(this)" /><br>
+        <label for="testFile">Select Test File    :</label><input type="file" ng-model-instant id="testFile" onchange="angular.element(this).scope().setFiles(this)" /><br>
+        <lable for="threshold">Type Threshold     :</lable><input type="text" size="2" ng-model="threshold2"  id="threshold2"/><br>
+    </div>
+    <div  ng-show="files.length">
+        <div ng-repeat="tempFile in files">
+            <span>{{tempFile.file.webkitRelativePath || tempFile.file.name}}</span>
+            (<span ng-switch="tempFile.file.size > 1024*1024">
+                <span ng-switch-when="true">{{tempFile.file.size / 1024 / 1024 | number:2}} MB</span>
+                <span ng-switch-default>{{tempFile.file.size / 1024 | number:2}} kB</span>
+            </span>)
+        </div>
+
+        <input type="button" ng-click="uploadFile()" value="Upload" />
+        <div ng-show="progressVisible">
+            <div class="percent">{{progress}}%</div>
+            <div class="progress-bar">
+                <div class="uploaded" ng-style="{'width': progress+'%'}"></div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    Select Target Type *
+    <select id="targetType" ng-model="targetType">
+        <option value="StarShip">StarShip</option>
+        <option value="SlimeTorpedo">SlimeTorpedo</option>
+    </select>
+    <br>
+    <br> Target Slected: {{targetType }}
+    <br>
+    <br>
+    <br>
+    <div ng-show="flagresult"  style='overflow:scroll; height:250px;align:center;'>
+        <table>
+            <tr>
+                <th>X-Coordinate</th>
+                <th>Y-Coordinate</th>
+                <th>Confidence Percentage</th>
+            </tr>
+            <tr ng-repeat="tmp in result">
+            <td align="center">{{tmp.x}}</td>
+            <td align="center">{{tmp.y}}</td>
+            <td align="center">{{tmp.confidencepercentage}}</td>
+            <td align="center"><input type="button" ng-click="openModel(tmp.y, tmp.x)" value="Display" /></td>
+            </tr>
+        </table>
+    </div>
+    <div>
+
+    </div>
+    <ul style="color: Red">{{ error}}</ul>
+
+    <div modal="showModal" close="cancel()" >
+        <div class="modal-header">
+            <h4>Target Map Dialog</h4>
+        </div>
+        <div class="modal-body">
+            <p>Target Position is highlighted with Yellow.</p>
+            <table  ng-show="testDataMatrixArr.length > 0" >
+                <tr  ng-repeat="testData in testDataMatrixArr track by $index">
+                    <td id="{{$parent.$index}}:{{$index}}"  ng-repeat="data in testData track by $index" ng-style="{'background-color': $parent.$index - X >= 0 &&  $parent.$index - X < targetMatrixArr.length &&
+							$index - Y >= 0 && $index - Y < targetMatrixArr[0].length  && targetMatrixArr[$parent.$index - X][$index - Y] === '+'? 'yellow' : ''}">
+                        {{data}}
+                    </td>
+                </tr>
+
+            </table>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-success" ng-click="ok()">Okay</button>
+            <button class="btn" ng-click="cancel()">Cancel</button>
+        </div>
+        <script>
+            window.scrollTo(document.getElementById("{{X}}:{{Y}}").getBoundingClientRect().left - 30,0);
+
+        </script>
+    </div>
+
+
+</div>
+<div class="footer-anml">
+
+
+</div>
