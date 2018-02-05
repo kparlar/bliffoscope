@@ -85,7 +85,7 @@ th {
 .logo {
   position: fixed;
   top:-25px;
-  background: url(../img/ServiceNow.png) no-repeat;
+  /*background: url() no-repeat;*/
   background-size: contain;
   width: 208px;
   height: 200px;
